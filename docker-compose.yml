@@ -12,3 +12,11 @@ services:
       - ./backend:/work
       - ./infra/nginx/default.conf:/etc/nginx/conf.d/default.conf
     working_dir: /work
+  db:
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      ACCEPT_EURA: "Y"
+      SA_PASSWORD: "Happy2018"
+      MSSQL_AGENT_ENABLED: "true"
+    ports:
+      - "1433:1433"
