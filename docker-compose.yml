@@ -15,8 +15,12 @@ services:
   db:
     image: mcr.microsoft.com/mssql/server:2017-latest
     environment:
-      ACCEPT_EURA: "Y"
-      SA_PASSWORD: "Happy2018"
-      MSSQL_AGENT_ENABLED: "true"
+      - ACCEPT_EURA=Y
+    env_file:
+      - sql-server-2017.env
     ports:
-      - "1433:1433"
+      - 1433:1433
+    volumes:
+      - ./DB/DATA:/var/opt/mssql/data
+      - ./DB/LOG:/var/opt/mssql/log
+      - ./DB/secrets:/var/opt/mssql/sec
