@@ -29,3 +29,4 @@ Route::get('home', function(){
         return redirect('/');
     }
 })->name('home');
+Route::POST('Input', [AuthController::class, 'Input'])->name('Input');
